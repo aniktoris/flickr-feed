@@ -4,9 +4,10 @@ interface Error {
   error: string;
 }
 
-export const GET = async () => {
+export const GET = async (req: Request, {params} : {params: {tags: string}}) => {
   try {
-    const response = await fetch('https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1',
+    const tags = params.tags;
+    const response = await fetch(`https://www.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=${tags}`,
       {next: {revalidate: 10}}
     );
     if (!response.ok) {
