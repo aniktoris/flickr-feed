@@ -9,6 +9,7 @@ const Feed = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [tags, setTags] = useState<string>('');
+  const [displayedTag, setDisplayedTag] = useState<string>('')
 
   const fetchImages = async () => {
     setLoading(true);
@@ -37,6 +38,7 @@ const Feed = () => {
     e.preventDefault();
     // fetching images with tag after clicking button
     fetchImages();
+    setDisplayedTag(tags);
     setTags('');
   };
 
@@ -60,7 +62,7 @@ const Feed = () => {
       ) : error ? (
         <div>{error}</div>
       ) : (
-        <ImageCardList feed={feed} />
+        <ImageCardList feed={feed} displayedTag={displayedTag}/>
       )}
     </section>
   );

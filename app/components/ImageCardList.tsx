@@ -4,13 +4,14 @@ import { ImageProps } from './ImageProps'
 
 interface ImageCardListProps {
   feed: ImageProps[];
+  displayedTag: string;
 }
 
-const ImageCardList: React.FC<ImageCardListProps> = ({feed}) => {
+const ImageCardList: React.FC<ImageCardListProps> = ({feed, displayedTag}) => {
   return (
     <div className='mt-16 flex flex-wrap gap-16'>
       {feed.map((item: ImageProps) => (
-        <ImageCard key={item.link} item={item}/>
+        <ImageCard key={item.link} item={item} displayedTag={displayedTag}/>
       ))}
       </div>
   )

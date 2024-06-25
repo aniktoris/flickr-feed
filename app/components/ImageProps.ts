@@ -3,5 +3,5 @@ export interface ImageProps {
   link: string;
   date_taken: string;
   author: string;
-  media: {m: string}
+  media: {m: string};
 }
